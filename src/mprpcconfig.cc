@@ -29,7 +29,11 @@ void MprpcConfig::LoadConfigFile(const char *config_file)
     while(!feof(pf))
     {
         char buf[512] = {0};
-        fgets(buf, 512, pf);
+        if (nullptr == fgets(buf, 512, pf))
+        {
+            std::cout << "fgets file error!\n";
+            exit(EXIT_FAILURE);
+        }
         std::string src_buf(buf);
         if(src_buf[0] == '#' ||  src_buf.empty())
         {

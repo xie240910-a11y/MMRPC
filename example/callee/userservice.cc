@@ -46,6 +46,31 @@ public:
         // 执行回调
         done->Run();
     }
+
+    bool Register(uint32_t id, string name, string pwd)
+    {
+        cout << "doing Register func()\n"; 
+        cout << "id: " << id << ", name: " << name << ", pwd: " << pwd << endl; 
+        return true;
+    }
+
+    void Register(::google::protobuf::RpcController* controller,
+                       const ::fixbug::RegisterRequest* request,
+                       ::fixbug::RegisterResponse* response,
+                       ::google::protobuf::Closure* done)
+    {
+        uint32_t id = request->id();
+        string name = request->name();
+        string pwd = request->pwd();
+
+        bool login_result = Register(id, name, pwd); // 做本地业务
+        response->mutable_result()->set_errcode(0);;
+        response->mutable_result()->set_errmsg("success");;
+        response->set_success(login_result);
+        
+        // 执行回调
+        done->Run();
+    }
 };
 
 int main(int argc, char *argv[])

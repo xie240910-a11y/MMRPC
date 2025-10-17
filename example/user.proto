@@ -11,12 +11,6 @@ message ResultCode
     bytes errmsg = 2;
 }
 
-enum Sex
-{
-    MAN = 0;
-    WOMAN = 1;
-}
-
 // 登录请求消息类型
 message LoginRequest {
     bytes name = 1;
@@ -30,27 +24,22 @@ message LoginResponse
     bool success = 2;
 }
 
-message GetFriendListsRequest
+message RegisterRequest
 {
-    uint32 userid = 1;
+    uint32 id = 1;
+    bytes name = 2;
+    bytes pwd = 3;
 }
 
-message User
-{
-    bytes name = 1;
-    uint32 age = 2;
-    Sex sex = 3;
-}
-
-message GetFriendListsResponse
+message RegisterResponse
 {
     ResultCode result = 1;
-    repeated User friend_list = 2;
+    bool success = 2;
 }
 
 service UserServiceRpc
 {
     rpc Login(LoginRequest) returns(LoginResponse);
     rpc GetFriendLists(GetFriendListsRequest) returns(GetFriendListsResponse);
-
+    rpc Register(RegisterRequest) returns(RegisterResponse);
 }
