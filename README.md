@@ -41,3 +41,9 @@
     使用protoc会生成UserServiceRpc（rpc服务提供者）跟UserServiceRpc_Stub(rpc服务消费者)，Stub是一个装类，给调用方提供
     UserServiceRpc_Stub(RpcChannel *channel)构造方法，底层都是RpcChannel调用CallMethod()方法
     RpcChannel是一个抽象类，CallMethod是一个纯虚函数
+
+# zk使用说明
+    环境需要存在java的jdk
+    解压压缩包 更新conf/zooexample.cfg 为zoo.cfg 更改文件的保存地址dataDir bin目录启动./zkServer.sh start, 进入客户端./zkCli.sh
+    
+    客户端常用命令：cd，ls，get，create，delete，set

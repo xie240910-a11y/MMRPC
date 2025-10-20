@@ -4,6 +4,7 @@
 #include "friend.pb.h"
 #include "mprpcapplication.h"
 #include "rpcprovider.h"
+#include "logger.h"
 
 using std::string;
 using std::cout;
@@ -42,6 +43,7 @@ public:
 
 int main(int argc, char *argv[])
 {
+    LOG_ERR("init friend service..");
     // 调用框架初始化操作
     MprpcApplication::Init(argc, argv);
 
