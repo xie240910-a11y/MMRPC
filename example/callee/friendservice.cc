@@ -29,7 +29,7 @@ public:
                        ::google::protobuf::Closure* done)
     {
         uint32_t userid = request->userid();
-        std::vector<string>  friendsList = GetFriendsList(userid);
+        std::vector<string> friendsList = GetFriendsList(userid);
         response->mutable_result()->set_errcode(0);
         response->mutable_result()->set_errmsg("");
         for (string &name : friendsList)
